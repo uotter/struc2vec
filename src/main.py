@@ -8,9 +8,9 @@ from gensim.models import Word2Vec
 from gensim.models.word2vec import LineSentence
 from time import time
 
-import graph
+import src.graph as graph
 
-logging.basicConfig(filename='struc2vec.log', filemode='w', level=logging.DEBUG, format='%(asctime)s %(message)s')
+logging.basicConfig(filename='struc2vec.log', filemode='w', level=logging.INFO, format='%(asctime)s %(message)s')
 
 
 def parse_args():
@@ -19,7 +19,7 @@ def parse_args():
     '''
     parser = argparse.ArgumentParser(description="Run struc2vec.")
 
-    parser.add_argument('--input', nargs='?', default='graph/karate.edgelist',
+    parser.add_argument('--input', nargs='?', default='graph/dump_graph.edgelist',
                         help='Input graph path')
 
     parser.add_argument('--output', nargs='?', default='emb/karate.emb',
