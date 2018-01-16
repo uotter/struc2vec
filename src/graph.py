@@ -18,7 +18,7 @@ import random
 from random import shuffle
 from itertools import product,permutations
 import collections
-
+import scipy as sci
 from concurrent.futures import ProcessPoolExecutor
 
 from multiprocessing import Pool
@@ -219,11 +219,11 @@ def load_edgelist(file_, undirected=True):
   return G
 
 
-def load_matfile(file_, variable_name="network", undirected=True):
-  mat_varables = loadmat(file_)
-  mat_matrix = mat_varables[variable_name]
-
-  return from_numpy(mat_matrix, undirected)
+# def load_matfile(file_, variable_name="network", undirected=True):
+#   mat_varables = loadmat(file_)
+#   mat_matrix = mat_varables[variable_name]
+#
+#   return from_numpy(mat_matrix, undirected)
 
 
 def from_networkx(G_input, undirected=True):
@@ -242,7 +242,7 @@ def from_networkx(G_input, undirected=True):
 def from_numpy(x, undirected=True):
     G = Graph()
 
-    if issparse(x):
+    if sci.sparse.issparse(x):
         cx = x.tocoo()
         for i,j,v in zip(cx.row, cx.col, cx.data):
             G[i].append(j)
