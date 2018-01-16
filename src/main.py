@@ -19,10 +19,10 @@ def parse_args():
     '''
     parser = argparse.ArgumentParser(description="Run struc2vec.")
 
-    parser.add_argument('--input', nargs='?', default='graph/dump_graph.edgelist',
+    parser.add_argument('--input', nargs='?', default='../graph/dump_graph.edgelist',
                         help='Input graph path')
 
-    parser.add_argument('--output', nargs='?', default='emb/karate.emb',
+    parser.add_argument('--output', nargs='?', default='../emb/dump_graph.emb',
                         help='Embeddings path')
 
     parser.add_argument('--dimensions', type=int, default=128,
@@ -43,7 +43,7 @@ def parse_args():
     parser.add_argument('--iter', default=5, type=int,
                         help='Number of epochs in SGD')
 
-    parser.add_argument('--workers', type=int, default=4,
+    parser.add_argument('--workers', type=int, default=1,
                         help='Number of parallel workers. Default is 8.')
 
     parser.add_argument('--weighted', dest='weighted', action='store_true',
