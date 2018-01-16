@@ -7,9 +7,9 @@ from multiprocessing import Manager
 from time import time
 from collections import deque
 
-from src.utils import *
-from src.algorithms import *
-from src.algorithms_distances import *
+from utils import *
+from algorithms import *
+from algorithms_distances import *
 import graph
 
 

@@ -124,12 +124,12 @@ class Graph(defaultdict):
 
   def gToDict(self):
     d = {}
-    for k,v in self.items():
+    for k,v in self.iteritems():
       d[k] = v
     return d
 
   def printAdjList(self):
-    for key,value in self.items():
+    for key,value in self.iteritems():
       print (key,":",value)
 
 
@@ -280,7 +280,7 @@ def from_adjlist_unchecked(adjlist):
 
 def from_dict(d):
     G = Graph()
-    for k,v in d.items():
+    for k,v in d.iteritems():
       G[k] = v
 
     return G

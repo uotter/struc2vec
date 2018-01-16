@@ -25,7 +25,6 @@ def chunks(data, SIZE=10000):
 
 def partition(lst, n):
     division = len(lst) / float(n)
-    lst = list(lst)
     return [lst[int(round(division * i)): int(round(division * (i + 1)))] for i in range(n)]
 
 

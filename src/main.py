@@ -3,12 +3,12 @@
 
 import argparse, logging
 import numpy as np
-import src.struc2vec as struc2vec
+import struc2vec as struc2vec
 from gensim.models import Word2Vec
 from gensim.models.word2vec import LineSentence
 from time import time
 
-import src.graph as graph
+import graph as graph
 
 logging.basicConfig(filename='struc2vec.log', filemode='w', level=logging.INFO, format='%(asctime)s %(message)s')
 

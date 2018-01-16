@@ -6,7 +6,7 @@ import math, logging
 from fastdtw import fastdtw
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from collections import defaultdict
-from src.utils import *
+from utils import *
 import os
 
 limiteDist = 20
@@ -377,7 +377,7 @@ def calc_distances_all(vertices, list_vertices, degreeList, part, compactDegree=
 def preprocess_consolides_distances(distances, startLayer=1):
     logging.info('Consolidating distances...')
 
-    for vertices, layers in distances.items():
+    for vertices, layers in distances.iteritems():
         keys_layers = sorted(layers.keys())
         startLayer = min(len(keys_layers), startLayer)
         for layer in range(0, startLayer):
@@ -464,8 +464,8 @@ def generate_distances_network_part1(workers):
         logging.info('Executing part {}...'.format(part))
         distances = restoreVariableFromDisk('distances-' + str(part))
 
-        for vertices, layers in distances.items():
-            for layer, distance in layers.items():
+        for vertices, layers in distances.iteritems():
+            for layer, distance in layers.iteritems():
                 vx = vertices[0]
                 vy = vertices[1]
                 if (layer not in weights_distances):
@@ -474,7 +474,7 @@ def generate_distances_network_part1(workers):
 
         logging.info('Part {} executed.'.format(part))
 
-    for layer, values in weights_distances.items():
+    for layer, values in weights_distances.iteritems():
         saveVariableOnDisk(values, 'weights_distances-layer-' + str(layer))
     return
 
@@ -487,8 +487,8 @@ def generate_distances_network_part2(workers):
         logging.info('Executing part {}...'.format(part))
         distances = restoreVariableFromDisk('distances-' + str(part))
 
-        for vertices, layers in distances.items():
-            for layer, distance in layers.items():
+        for vertices, layers in distances.iteritems():
+            for layer, distance in layers.iteritems():
                 vx = vertices[0]
                 vy = vertices[1]
                 if (layer not in graphs):
@@ -501,7 +501,7 @@ def generate_distances_network_part2(workers):
                 graphs[layer][vy].append(vx)
         logging.info('Part {} executed.'.format(part))
 
-    for layer, values in graphs.items():
+    for layer, values in graphs.iteritems():
         saveVariableOnDisk(values, 'graphs-layer-' + str(layer))
 
     return
@@ -518,7 +518,7 @@ def generate_distances_network_part3():
         alias_method_q = {}
         weights = {}
 
-        for v, neighbors in graphs.items():
+        for v, neighbors in graphs.iteritems():
             e_list = deque()
             sum_w = 0.0
 
