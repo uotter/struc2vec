@@ -14,4 +14,5 @@ if __name__ == "__main__":
     project_root_path = os.path.abspath('..')
     file_name = project_root_path + r"\data\dump_graph.protobuf.bin"
     g = readGraph(file_name)
-    print(g)
+    edges = g.graphs._values[0].graph.edges
+    print(edges)
