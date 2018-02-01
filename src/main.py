@@ -19,10 +19,10 @@ def parse_args():
     '''
     parser = argparse.ArgumentParser(description="Run struc2vec.")
 
-    parser.add_argument('--input', nargs='?', default='../graph/dump_graph.edgelist',
+    parser.add_argument('--input', nargs='?', default='../graph/gft_total.edgelist',
                         help='Input graph path')
 
-    parser.add_argument('--output', nargs='?', default='../emb/dump_graph.emb',
+    parser.add_argument('--output', nargs='?', default='../emb/gft_struc2vec_total.emb',
                         help='Embeddings path')
 
     parser.add_argument('--dimensions', type=int, default=128,
